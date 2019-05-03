@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->index();
             $table->enum('gender', ['Male', 'Female']);
+            $table->string('username', 40)->unique()->index();
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();

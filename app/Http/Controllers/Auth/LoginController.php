@@ -5,20 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
@@ -36,6 +26,41 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function username()
+    {
+        return filter_var(request()->input('identity'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+    }
+
+    protected function credentials(Request $request)
+    {
+        $request->merge([
+            $this->username() => $request->input('identity'),
+        ]);
+
+        return $request->only($this->username(), 'password');
+    }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'identity'             => 'required',
+            'password'             => 'required',
+            'g-recaptcha-response' => 'recaptcha',
+        ]);
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        toast('Welcome back '.$user->first_name, 'success', 'top-right');
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            'identity' => [trans('auth.failed')],
+        ]);
     }
 
     public function logout(Request $request)

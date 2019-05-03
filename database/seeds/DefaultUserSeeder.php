@@ -9,6 +9,7 @@ class DefaultUserSeeder extends Seeder
         // Create default user (as superuser).
         factory(App\Models\User::class)->create([
             'name'              => 'Admin Sistem',
+            'username'          => 'admin',
             'password'          => 'secret',
             'email'             => 'admin@mail.com',
             'email_verified_at' => now(),

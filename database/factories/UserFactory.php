@@ -11,12 +11,14 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     $gender = $gender[array_rand($gender)];
 
     $name  = $faker->name(strtolower($gender));
-    $umail = (strlen($name) > 10) ? substr($name, 0, 14) : $name;
-    $email = Str::slug($umail, '_').'@'.$faker->freeEmailDomain;
+    $uname = (strlen($name) > 10) ? substr($name, 0, 14) : $name;
+    $uname = Str::slug($uname, '_');
+    $email = $uname.'@'.$faker->freeEmailDomain;
 
     return [
         'name'              => $name,
         'gender'            => $gender,
+        'username'          => $uname,
         'email'             => $email,
         'email_verified_at' => $verified[array_rand($verified)],
         'password'          => 'secret',

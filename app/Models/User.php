@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use UuidAsPrimary;
 
     protected $fillable = [
-        'name', 'gender', 'email', 'password',
+        'name', 'gender', 'username', 'email', 'password',
     ];
 
     protected $hidden = [
