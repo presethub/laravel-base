@@ -35,6 +35,16 @@ composer create-project presethub/laravel-base <app_name> <version>
 Change `<app_name>` with your own and `<version>` with release version.
 See [release page][releasepage] for the version number.
 
+
+#### Package Version
+
+The versioning number will follow the release of the Laravel version, followed by the package version release number:
+
+```
+a.b.c  =>  a.b are Laravel version, c is package version.
+5.8.1  =>  Laravel 5.8 and 1 is release number / revision.
+```
+
 ### Start Developing
 
 Edit or create `.env` file and then execute:

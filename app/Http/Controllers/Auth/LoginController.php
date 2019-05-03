@@ -66,17 +66,19 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         if (!auth()->check()) {
-            toast('You have not logged in before!', 'warning', 'top-right');
+            $msg = 'You have not logged in before!';
+            toast($msg, 'warning', 'top-right');
 
-            return redirect(route('login'));
+            return redirect(route('login'))->with(['warning' => $msg]);
         }
 
         $this->guard()->logout();
 
         $request->session()->invalidate();
 
-        toast('You\'ve been logged out!', 'success', 'top-right');
+        $msg = 'You\'ve been logged out!';
+        toast($msg, 'success', 'top-right');
 
-        return $this->loggedOut($request) ?: redirect(route('login'));
+        return $this->loggedOut($request) ?: redirect(route('login'))->with(['success' => $msg]);
     }
 }

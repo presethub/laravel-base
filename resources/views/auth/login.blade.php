@@ -11,6 +11,8 @@
                     <form id="login-form" method="POST" action="{{ route('login') }}">
                         @csrf
 
+                        @include('partials.alert')
+
                         <div class="form-group row">
                             <label for="identity" class="col-md-4 col-form-label text-md-right">{{ __('Username or E-Mail') }}</label>
                             <div class="col-md-6">
