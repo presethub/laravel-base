@@ -11,6 +11,12 @@ class DummyUserSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Models\User', 5)->create();
+        $count = (int)$this->command->ask('How many users do you need ?', 10);
+
+        $this->command->info("Creating {$count} users.");
+
+        factory('App\Models\User', $count)->create();
+
+        $this->command->info('Dummy users created!');
     }
 }
