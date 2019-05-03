@@ -1,7 +1,7 @@
 # Laravel Standard Scaffolding
 
 [![Build Status](https://travis-ci.org/presethub/laravel-base.svg?branch=master)](https://travis-ci.org/presethub/laravel-base)
-[![StyleCI Status](https://github.styleci.io/repos/182516480/shield?branch=master)](https://github.styleci.io/repos/182516480)
+[![StyleCI Status](https://github.styleci.io/repos/184733142/shield?branch=master)](https://github.styleci.io/repos/184733142)
 [![Total Download](https://poser.pugx.org/presethub/laravel-base/d/total.svg?format=flat-square)](https://packagist.org/packages/presethub/laravel-base)
 [![Latest Stable Version](https://poser.pugx.org/presethub/laravel-base/v/stable.svg?format=flat-square)](https://packagist.org/packages/presethub/laravel-base)
 [![License](https://img.shields.io/badge/license-mit-green.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
@@ -15,17 +15,23 @@
 
 ## Quick Start
 
-At least you will need `PHP >= 7.2` and `Nodejs >= 8.15`. You can choose between `PostgreSQL >= 9.6`
-or `MySQL >= 5.7` or `MariaDB >= 10.3` for your application database. Also, you maybe want to use
-`Redis >= 3.2` for session store and caching.
+At least you will need `PHP >= 7.2` and `Nodejs >= 8.15`. For database backend, you can choose between
+`PostgreSQL >= 9.6` or `MySQL >= 5.7` or `MariaDB >= 10.3` or any other database engine that supported
+by Laravel. Also, you maybe want to use `Redis >= 3.2` for session store and or caching storage.
 
 ### Create New Project
+
+```
+composer create-project presethub/laravel-base <app_name>
+```
+
+Or, if you want to use spesific version:
 
 ```
 composer create-project presethub/laravel-base <app_name> <version>
 ```
 
-Change `<app_name>` with your own and `<version>` with this gram version.
+Change `<app_name>` with your own and `<version>` with release version.
 See [release page][releasepage] for the version number.
 
 ### Start Developing
