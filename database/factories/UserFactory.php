@@ -4,7 +4,6 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
-
     $verified = [now(), null];
 
     $gender = ['Male', 'Female'];
@@ -26,5 +25,4 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'created_at'        => $faker->dateTimeBetween('-1 years'),
         'updated_at'        => $faker->dateTimeBetween('-6 months'),
     ];
-
 });
