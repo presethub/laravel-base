@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\UuidAsPrimary;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
+    use UuidAsPrimary;
 
     protected $fillable = [
         'name', 'gender', 'email', 'password',
@@ -35,6 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->attributes['password'] = Hash::make($password);
     }
+
     /**
      * Get user first name.
      *
@@ -44,6 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $parser = new \TheIconic\NameParser\Parser();
         $name = $parser->parse($this->name);
+
         return $name->getFirstname();
     }
 }
