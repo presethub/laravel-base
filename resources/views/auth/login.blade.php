@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form id="login-form" method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -27,6 +27,7 @@
                             </div>
                         </div>
 
+                        @if (config('auth.enable_remember'))
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -35,6 +36,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -56,6 +58,6 @@
 </div>
 @endsection
 
-@push('scripts')
-    <script>let form = document.getElementsByTagName('form')[0]; if (typeof (form) != 'undefined' && form != null) { form.setAttribute('autocomplete', 'off');}</script>
-@endpush
+{{-- @push('scripts')
+    <script>disableAutoComplete('#login-form');</script>
+@endpush --}}

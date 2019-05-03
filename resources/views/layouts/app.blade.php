@@ -59,8 +59,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script> @stack('scripts')
     @if (Session::has('alert.config')) <script>Swal.fire({!! session()->pull('alert.config') !!});</script> @endif
-    @stack('scripts')
 </body>
 </html>
