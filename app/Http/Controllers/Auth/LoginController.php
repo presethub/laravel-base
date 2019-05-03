@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'dashboard';
 
     /**
      * Create a new controller instance.
@@ -35,5 +36,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $request)
+    {
+        if (!auth()->check()) {
+            toast('You have not logged in before!', 'warning', 'top-right');
+
+            return redirect(route('login'));
+        }
+
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        toast('You\'ve been logged out!', 'success', 'top-right');
+
+        return $this->loggedOut($request) ?: redirect(route('login'));
     }
 }

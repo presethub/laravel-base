@@ -7,7 +7,7 @@
         <link href="//fonts.googleapis.com/css?family=Nunito+Sans:200,600" rel="stylesheet">
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #fafafa;
                 color: #636b6f;
                 font-family: 'Nunito Sans', sans-serif;
                 font-weight: 200;
@@ -63,7 +63,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('home') }}">Home</a>
+                        <a href="{{ route('dashboard') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         @if (Route::has('register'))
@@ -73,20 +73,12 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    {{ config('app.name') }}
-                </div>
-                <div class="links">
-                    <a href="//laravel.com/docs">Docs</a>
-                    <a href="//laracasts.com">Laracasts</a>
-                    <a href="//laravel-news.com">News</a>
-                    <a href="//blog.laravel.com">Blog</a>
-                    <a href="//nova.laravel.com">Nova</a>
-                    <a href="//forge.laravel.com">Forge</a>
-                    <a href="//github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+            @yield('content')
+
         </div>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        @if (Session::has('alert.config')) <script>Swal.fire({!! session()->pull('alert.config') !!});</script> @endif
+        @stack('scripts')
     </body>
 </html>
