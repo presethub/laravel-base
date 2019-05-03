@@ -11,7 +11,7 @@ class DummyUserSeeder extends Seeder
      */
     public function run()
     {
-        $count = (int)$this->command->ask('How many users do you need ?', 10);
+        $count = (int) $this->command->ask('How many users do you need ?', 10);
 
         $this->command->info("Creating {$count} users ...");
 

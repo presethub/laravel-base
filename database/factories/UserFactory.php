@@ -10,7 +10,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     $gender = ['Male', 'Female'];
     $gender = $gender[array_rand($gender)];
 
-    $name  = $faker->name(strtolower($gender));
+    $name = $faker->name(strtolower($gender));
     $uname = (strlen($name) > 10) ? substr($name, 0, 14) : $name;
     $uname = Str::slug($uname, '_');
     $email = $uname.'@'.$faker->freeEmailDomain;
