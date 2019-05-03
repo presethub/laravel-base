@@ -124,10 +124,7 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        Str:: slug(config('app.name'), '_').'_session'
-    ),
+    'cookie' => env('SESSION_COOKIE', Str::slug(config('app.name'), '_').'_session'),
 
     /*
     |--------------------------------------------------------------------------
