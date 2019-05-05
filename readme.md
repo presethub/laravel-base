@@ -9,9 +9,9 @@
 ## What's in the box?
 
 - Standard Laravel 5.8 preset.
+  - UUID primary key for User model.
+  - Authentication using email or username.
 - Bootstrap 4.3.1 + jQuery 3.4.1 + Vue 2.6.10.
-- UUID primary key for User model.
-- Authentication using email or username.
 - SweelAlert2 by [Rashid Ali](https://github.com/realrashid/sweet-alert).
 
 ## Quick Start

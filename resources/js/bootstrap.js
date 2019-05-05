@@ -43,3 +43,11 @@ if (token) {
 //     cluster: process.env.PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/**
+ * Disable form autocomplete.
+ */
+let form = document.querySelector('.form-nofill')[0];
+if (typeof (form) != 'undefined' && form != null) {
+    form.setAttribute('autocomplete', 'off');
+}
